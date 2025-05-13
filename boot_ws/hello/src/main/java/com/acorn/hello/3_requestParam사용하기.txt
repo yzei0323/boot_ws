@@ -1,0 +1,22 @@
+Name for argument of type [java.lang.String] not specified, and parameter name information not available via reflection. Ensure that the compiler uses
+
+
+
+    인테리제이에서는 name값을 생략하지 않고 작성하기 !
+
+
+
+    @GetMapping("/param1")
+    public String param( @RequestParam (name="data" ) String data){
+        System.out.println( data);
+        return "paramView";
+    }
+
+    @GetMapping("/param2")
+    public String param2( @RequestParam (name="su"  ,
+                          required = false ,
+                          defaultValue = "1")int su){
+        System.out.println( su);
+
+        return "paramView";
+    }

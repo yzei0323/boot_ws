@@ -1,0 +1,5 @@
+@ResponseBody
+
+return "notView";
+
+리턴값을 뷰로 인식안함 데이터로 인식

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>에이콘 전체 프로젝트 조원 명단</h2>
+<div th:each="entry : ${team}">
+    <p>조 이름</p>
+    <span th:text="${entry.key}"></span>
+    <!-- 조 명단 -->
+    <div th:each="user : ${entry.value}">
+        <span th:text="${user.id}"></span>
+        <span th:text="${user.name}"></span>
+        <span th:text="${user.tel}"></span>
+    </div>
+
+</div>
+</body>
+</html>

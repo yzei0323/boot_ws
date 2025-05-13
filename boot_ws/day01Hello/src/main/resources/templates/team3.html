@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>3조 명단</h2>
+
+<div th:each="item : ${team3}">
+  <span th:text="${item.id}">아이디</span>
+  <span th:text="${item.name}">이름</span>
+  <span th:text="${item.tel}">전화번호</span>
+</div>
+
+</body>
+</html>
