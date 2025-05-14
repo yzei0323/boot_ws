@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>친구추가</h2>
+<form th:action="@{/formResult}" method="post">
+  <input type="text" name="name" placeholder="이름">
+  <input type="text" name="pwd" placeholder="비밀번호">
+  <input type="text" name="birth" placeholder="생일">
+  <button>추가하기</button>
+</form>
+</body>
+</html>

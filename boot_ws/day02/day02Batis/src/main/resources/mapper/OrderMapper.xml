@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="b" >
+
+    <select id="selectAll" resultType="map">
+        SELECT  name, address, tel, odate, pname, sale_cnt, price, sale_cnt * price
+        FROM   tbl_test_order o
+        JOIN     tbl_test_customer c
+        ON       o.id = c.id
+        JOIN     tbl_test_goods g
+        ON       o.pcode = g.pcode
+    </select>
+
+
+</mapper>

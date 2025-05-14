@@ -1,0 +1,16 @@
+
+
+drop table membertbl;
+
+
+CREATE TABLE membertbl (
+    id   varchar2(10)   ,
+    name VARCHAR2(50),
+    email VARCHAR2(50)
+);
+
+
+
+INSERT INTO membertbl (id, name, email) VALUES ('user01', 'hong', 'hong@acorn.com');
+INSERT INTO membertbl (id, name, email) VALUES ('user02', 'kim', 'kim@acorn.com');
+INSERT INTO membertbl (id, name, email) VALUES ('user03', 'lee', 'lee@acorn.com');

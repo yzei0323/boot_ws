@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="a">
+
+    <resultMap id="member2Map" type="Member2">
+        <result property="m_id"  column="id"/>
+        <result property="m_name" column="name"/>
+        <result property="m_pw"  column="pw"/>
+    </resultMap>
+
+    <select id="selectAll" resultType="Member">
+        select   *  from  acorntbl
+    </select>
+
+    <select id="selectAll2"   resultMap="member2Map" >
+        select   *  from  acorntbl
+    </select>
+
+    <select id="selectAll3"   resultType="Member2">
+        select   *  from  acorntbl
+    </select>
+
+
+
+    <insert id="insert" parameterType="Member"> <!-- 입력받으니까 parameterType -->
+        insert into acorntbl values( #{id}, #{pw}, #{name} )
+    </insert>
+
+
+
+
+</mapper>

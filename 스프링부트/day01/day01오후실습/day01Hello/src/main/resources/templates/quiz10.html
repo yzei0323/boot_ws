@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>오후실습 10번</title>
+</head>
+<body>
+  <img th:src="@{'/imgs/' +  ${text} }" alt="img">
+  <div class="box" th:text="${text}">결과</div>
+</body>
+</html>
