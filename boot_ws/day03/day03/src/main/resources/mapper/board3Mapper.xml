@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="b3">
+
+
+    <!-- condition: content, keyword: 다형성 -->
+    <select id="selectBoard" resultType="BoardDTO" parameterType="SearchCondition">
+        select * from boardt
+
+        <!-- where태그는 조건이 만족하면 where절이 생김, 아니면 where절이 안 생김 -->
+        <where>
+            <if test="condition != null">
+                ${condition} like '%' || #{keyword} || '%'
+            </if>
+        </where>
+    </select>
+
+    <!--
+        select * from boardt where content like '%다형성%'
+        select * from boardt where content like '%' || 다형성 || '%'
+    -->
+    
+</mapper>

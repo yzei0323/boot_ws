@@ -1,0 +1,42 @@
+ 
+
+//장바구니테이블
+create table cart_tbl(
+  cartNO  number(4)  primary key ,
+  memberId varchar2(10) ,
+  goodsNo  varchar2(10),
+  cartQty     number(4)
+);
+
+
+insert into cart_tbl  values( 1, 'test01' , 'g001' ,3);
+insert into cart_tbl  values( 2, 'test01' , 'g002' ,1);
+insert into cart_tbl  values( 3, 'test02' , 'g002' ,1);
+	 
+// 상품테이블
+create table goods_tbl (
+  goodsNo  varchar2(10)  primary key,
+  name varchar2(10) ,
+  price number(4)
+);
+
+insert into goods_tbl  values( 'g001' ,'pants' , 2500);
+insert into goods_tbl  values( 'g002' , 't-shirts', 3000);
+insert into goods_tbl  values( 'g003' , 'vest', 4000);
+
+ 
+create table ordertbl  (
+   orderNo number(4)  primary key,
+   memberId varchar2(10)  , 
+   goodsNo varchar2(10) ,
+   goodsName varchar2(10),
+    qty varchar2(4) , 
+   amount number(10) ,
+   addr1 varchar2(20) ,
+   addr2 varchar2(20 ),
+   tel varchar2(13),
+   name varchar2(20)
+);
+
+
+create sequence order_seq_num ;

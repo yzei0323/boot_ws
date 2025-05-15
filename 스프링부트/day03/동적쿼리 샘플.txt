@@ -1,0 +1,78 @@
+검색기능 
+
+<form action="/batis/board/list"    method="get"> 
+<select  name="option>
+      <option value="A" > 제목 + 내용 </option>
+      <option value="T"> 제목만</option>
+      <option value="W">작성자 </option>
+</select>
+
+<input type="text"  name="keyword" >
+    <input type="submit"   value="전송">
+</form>
+
+ 
+
+<select id="select" parameterType="int"   resultType="BoardDto">
+     SELECT  * 
+     FROM board
+     WHERE  bno  = #{bno}
+</select>
+
+ 
+<select id="select" parameterType="int"   resultType="BoardDto">
+     SELECT  * 
+     FROM board
+     ORDER by 1
+</select>
+ 
+
+<sql id="selectFromBoard">
+    SELECT * 
+    from board
+</sql> 
+
+
+<select id="select" paremeterType="int"  resultType="BoardDto">
+  <include refid="selectFromBoard" />
+</select>
+ 
+
+
+<select id="countBoard" parameterType="map" resultType="int">
+    SELECT count(*)
+    FROM board
+    WHERE true
+    <if test='option == "A"'>
+        AND (title LIKE concat('%', #{keyword}, '%')
+        OR content LIKE concat('%', #{keyword}, '%'))
+    </if>
+    <if test='option == "T"'>
+        AND title LIKE concat('%', #{keyword}, '%')
+    </if>
+    <if test='option == "W"'>
+        AND writer LIKE concat('%', #{keyword}, '%')
+    </if>
+</select>
+
+
+
+
+<select id="searchresultCnt"   parameterType="SearchCondition"  resultType="int">
+   SELECT count(*)
+   FROM  board
+   WHERE  true
+    <choose>
+      <when test='option=="T"'>   
+	AND title LIKE  concat('%', #{keyword},  '%' )
+      </when>
+      <when>
+              AND writer LIKE concat('%' , #{keyword},  '%')
+      </when>
+       <otherwise>
+              AND (title LIKE concat ('%' , #{keyword},  '%' )
+              OR  contenr  LIKE  concat ('%' , #{keyword}, '%'))
+        </otherwise>   
+     </choose>
+</select>
+

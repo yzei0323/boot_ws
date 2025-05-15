@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="a">
+
+    <select id="SelectAll" resultType="Member">
+        select   *  from  membertbl
+    </select>
+
+
+    <select id="selectMembers" resultType="Member" parameterType="java.util.List">
+        SELECT *
+        FROM membertbl
+        WHERE id IN
+        <foreach item="item" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+
+    <insert id="insertMember"  parameterType="Member">
+        INSERT INTO membertbl (id, name, email )
+        VALUES (#{id}, #{name}, #{email} )
+    </insert>
+
+
+
+    <!-- 많은량을 일괄적으로 성능향상을 고려한다면 추천  -->
+    <insert id="insertMembers" parameterType="java.util.List">
+        INSERT INTO membertbl (id, name, email)
+        VALUES
+        <foreach collection="list" item="member" separator=",">
+            (#{member.id}, #{member.name}, #{member.email})
+        </foreach>
+    </insert>
+
+</mapper>

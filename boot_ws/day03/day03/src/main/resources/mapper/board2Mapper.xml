@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="b2">
+    <!--
+    select * from boardt;
+    select * from boardt  where  content  like '%다형성%';
+    select * from boardt  where  content  like '%' || '다형성'   ||'%';
+    -->
+
+    <!-- search 안의 코드가 밑에 selectBoard로 들어감 -->
+    <sql id="search">
+        <choose>
+            <when test="condition == 'title'">
+                where title like '%' || #{keyword} || '%'
+            </when>
+            <when test="condition == 'writer'">
+                where writer like '%' || #{keyword} || '%'
+            </when>
+            <when test="condition == 'content'">
+                where content like '%' || #{keyword} || '%'
+            </when>
+        </choose>
+    </sql>
+
+    <!-- condition: content, keyword: 다형성 -->
+
+    <select id="selectBoard" resultType="BoardDTO" parameterType="SearchCondition">
+        select * from boardt
+        <include refid="search"/>
+    </select>
+    
+    
+</mapper>

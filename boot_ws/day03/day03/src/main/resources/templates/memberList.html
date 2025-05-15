@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2> 조회된 고객목록 </h2>
+
+<div th:each="item : ${list}">
+  <span th:text="${item.id}"></span>
+  <span th:text="${item.name}"></span>
+  <span th:text="${item.email}"></span>
+</div>
+
+</body>
+</html>

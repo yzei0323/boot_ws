@@ -1,0 +1,40 @@
+
+drop table membertbl;
+drop table boardt;
+
+
+CREATE TABLE boardt (
+    board_no NUMBER PRIMARY KEY,
+    title    VARCHAR2(200),
+    writer   VARCHAR2(100),
+    content  VARCHAR2(100)
+);
+
+
+CREATE TABLE membertbl (
+    id   varchar2(10) primary key  ,
+    name VARCHAR2(50),
+    email VARCHAR2(50)
+);
+
+
+
+INSERT INTO boardt (board_no, title, writer, content)
+VALUES (1, '첫 번째 게시글', '변우석', '자바 다형성이 뭔가요? ');
+
+INSERT INTO boardt (board_no, title, writer, content)
+VALUES (2, '두 번째 게시글', '공유', ' toString()매서드 오버라이드 해야 하나요');
+
+INSERT INTO boardt (board_no, title, writer, content)
+VALUES (3, '세 번째 게시글', '브래드피트', '생성자와 접근제어자를 두는 이유는 뭔가요');
+
+
+INSERT INTO boardt (board_no, title, writer, content)
+VALUES (4, '세 번째 게시글', '한효주', 'Comparator.comparing(  item -> item.getName )  이 내용설명해주세요 ');
+
+
+
+insert into membertbl values('acorn','권지언','aaa@naver.com');
+insert into membertbl values('acorn3','윤현기','bbb@goole.com');
+insert into membertbl values('acorn4','박예린','ccc@naver.com');
+commit;
