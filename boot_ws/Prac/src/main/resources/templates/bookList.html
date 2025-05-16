@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<h2>책 목록</h2>
+<div th:each="item:${list}">
+  <span th:text="${item.book_id}"></span>
+  <span th:text="${item.book_name}"></span>
+  <span th:text="${item.book_author}"></span>
+  <span th:text="${item.book_genre}"></span>
+</div>
+
+</body>
+</html>

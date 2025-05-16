@@ -1,0 +1,57 @@
+도서관 테이블
+- 도서관 아이디 (기본키)
+- 도서관 이름
+
+책 테이블
+- 도서관 아이디 (외래키)
+- 책 아이디 (기본키)  있어야되나???
+- 도서명
+- 저자
+- 장르
+
+
+음.. 
+뭘 해야됨?
+움..
+그니까 뭘 만들거냐면
+도서관별로 책을 검색할거임 .... 맞음? 
+
+그니까 도서관을 선택을 해
+
+아니 그니까 어제 한 게 뭐였냐면 게시판이었잖아
+일단 그 글 목록이 쫙 출력이 되는거였음 ㅇㅇ
+어어 그리고 검색을 하면??  뭐 글제목 작성자 내용? 골라서 검색하면? 나옴
+
+그니까 우리도 아 ㅇㅋㅇㅋ 뭔말알 알겠다
+
+일단 책을 다 출력하는 걸로 하자
+그리고?? 글고...
+도서관 / 장르 / 제목 / 저자 이걸로 검색할 수 있게 ㅇㅋㅇㅋ 헐 걍 따라서 만들기만 하면됨 ㄹㅇ
+
+
+아니 봐봐
+
+CREATE TABLE BOOK_LIB (
+  LIB_ID VARCHAR2(20) PRIMARY KEY,
+  LIB_NAME VARCHAR2(20) NOT NULL
+);
+
+CREATE TABLE BOOK(
+  BOOK_ID VARCHAR2(20) PRIMARY KEY,
+  BOOK_NAME VARCHAR2(20) NOT NULL,
+  BOOK_AUTHOR VARCHAR2(20) NOT NULL,
+  BOOK_GENRE VARCHAR2(20) NOT NULL,
+  CONSTRAINT FK_LIB_ID FOREIGN KEY (BOOK_ID) REFERENCES BOOK_LIB(LIB_ID)
+);
+
+lib_id 
+book_id가 외래키잔어
+
+조인을 해야돼 
+
+
+로그인
+회원가입
+
+
+

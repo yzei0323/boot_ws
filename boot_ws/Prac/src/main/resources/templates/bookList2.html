@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .wrap{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+    .img{
+        width: 260px;
+        height: 320px;
+        text-align: center;
+        background-color: white;
+    }
+
+    img{
+        width: 200px;
+        border-radius: 5px;
+    }
+
+    h4,p{
+        padding: 0 25px 10px 25px;
+        margin: 0;
+        background-color: white;
+        width: 260px;
+        box-sizing: border-box;
+    }
+    .item{
+        margin: 23px;
+    }
+</style>
+<body>
+<h2>책 검색하기</h2>
+<!--검색-->
+<form th:action="@{/book}" method="get">
+    <select name="condition">
+        <option value="book_id">도서관</option>
+        <option value="book_name">제목</option>
+        <option value="book_author">작가</option>
+        <option value="book_genre">장르</option>
+    </select>
+    <input type="text" name="keyword">
+    <button>검색하기</button>
+</form>
+
+
+<h3>책 목록</h3>
+<div class="wrap">
+    <div class="item" th:each="item:${list}">
+        <div class="img">
+            <img th:src="${item.book_image}">
+        </div>
+        <h4 th:text="${item.book_name}"></h4>
+        <p th:text="${item.book_author}"></p>
+    </div>
+</div>
+
+</body>
+</html>

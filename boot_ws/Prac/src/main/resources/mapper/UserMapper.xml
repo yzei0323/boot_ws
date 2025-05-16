@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="user">
+
+    <insert id="insert" parameterType="LibUser"> <!-- 입력받으니까 parameterType -->
+        insert into LibUser values( #{id}, #{pw}, #{name} )
+    </insert>
+
+    <select id="login" parameterType="LibUser" resultType="LibUser">
+        select * from LibUser where id=#{id} and pw=#{pw}
+    </select>
+
+</mapper>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+   .result-container  {
+        background-color: #fff;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 30%;
+        margin-left: 34%;
+
+    }
+    .result-container div {
+        margin: 5px 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+</style>
+<body>
+<h2>검색결과를 찾았습니다</h2>
+
+<div th:each=" books  : ${bookList}" class="result-container">
+    <div th:text="${books.lib_id}">도서관 번호</div>
+    <div th:text="${books.lib_name}">도서관 이름</div>
+    <div th:text="${books.book_id}">책 번호</div>
+    <div th:text="${books.book_name}">책 이름</div>
+    <div th:text="${books.book_author}">저자</div>
+    <div th:text="${books.book_genre}">장르</div>
+</div >
+
+</body>
+</html>

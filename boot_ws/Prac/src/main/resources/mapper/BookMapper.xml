@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="a">
+
+    <select id="selectSearch" resultType="Book" parameterType="java.util.List">
+        select book_image, book_name, book_author
+        from book
+        where book_id in
+        <foreach item="item" collection="list" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+
+    <sql id="search">
+        <if test="condition == 'book_id'">
+            where book_id like '%' || #{keyword} || '%'
+        </if>
+        <if test="condition == 'book_name'">
+            where book_name like '%' || #{keyword} || '%'
+        </if>
+        <if test="condition == 'book_author'">
+            where book_author like '%' || #{keyword} || '%'
+        </if>
+        <if test="condition == 'book_genre'">
+            where book_genre like '%' || #{keyword} || '%'
+        </if>
+    </sql>
+
+
+    <select id="selectBook" resultType="Book" parameterType="SearchCondition">
+        select book_image, book_name, book_author from book
+        <include refid="search"/>
+    </select>
+</mapper>

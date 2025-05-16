@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<h2>도서관을 선택하시오</h2>
+
+<form th:action="@{/bookSearch}" method="get">
+  <select name="bookId">
+    <option value="L01">도서관1</option>
+    <option value="L02">도서관2</option>
+    <option value="L03">도서관3</option>
+  </select>
+  <button>조회하기</button>
+</form>
+
+</body>
+</html>
