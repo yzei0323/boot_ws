@@ -1,0 +1,32 @@
+
+1. 서버요청데이터를 그대로  json으로 응답하기
+2. 네이버에서 받은 데이터를 가공해서 데이터로 제공하기
+    ItemDto 만들기
+   (정보를 담을 객체를 만든다)
+
+    // 서버에서 받은 데이타가 xml이면 json으로 변환 
+    JSONObject resultJson  =      XML.toJSONObject( xmlResult) ; 
+    //서버에서 받은 데이타가  jsonString 이면 그대로 
+  JSONObject  obj =  new JSONObejct(result) ;
+
+
+  //원하는 데이터 꺼내기
+  JSONObject  response  =   obj.getJSONObject("response");
+ JSONObject  item  = response.getJSONObject("items");
+ JSONArray   items =  item.getJSONArray("item")
+
+ //
+
+ for( int  i=0; i< items.length ; i++ ) {
+     
+   	JSONObject itemJson =  arr.getJSONObject(i);
+			System.out.println( itemJson); 
+			 String  title  = itemJson.getString("title");
+			 String  link  = itemJson.getString("link");
+			 String  image  = itemJson.getString("image");
+			 int lprice = itemJson.getInt("lprice");			
+			 ItemDto itemDto  = new ItemDto(title,link,image, lprice);
+			 list.add(itemDto);
+ }
+
+//원하는 데이터만  ArrayList에  담기 (ItemDTO )

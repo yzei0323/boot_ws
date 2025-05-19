@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>미세먼지 정보</title>
+</head>
+<style>
+    table{
+        border: 1px solid black;
+    }
+
+    td{
+        border: 1px solid black;
+    }
+
+</style>
+<body>
+
+<table>
+    <h2>미세먼지 정보</h2>
+    <tr>
+        <td>informGrade</td>
+        <td>dataTime</td>
+        <td>informCause</td>
+    </tr>
+
+    <!-- -->
+    <tr th:each="item : ${list}">
+        <td th:text="${item.informGrade}"></td>
+        <td th:text="${item.dataTime}"></td>
+        <td th:text="${item.informCause}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

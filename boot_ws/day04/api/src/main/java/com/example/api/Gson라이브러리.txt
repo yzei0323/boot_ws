@@ -1,0 +1,11 @@
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
+public static ArrayList<UserDto> fromJsonToListUsingGson(JSONArray arr) {
+    Gson gson = new Gson();
+    Type listType = new TypeToken<ArrayList<UserDto>>() {}.getType();
+    return gson.fromJson(arr.toString(), listType);
+    }

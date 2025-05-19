@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+  table{
+    border: 1px solid black;
+  }
+
+  td{
+    border: 1px solid black;
+  }
+
+  img{
+    width: 100px;
+    height: 100px;
+  }
+
+</style>
+<body>
+
+<table>
+  <tr>
+    <td>상품명</td>
+    <td>가격</td>
+    <td>이미지</td>
+    <td>링크</td>
+  </tr>
+
+  <!-- 모델데이터 반복 구간 -->
+  <tr th:each="item : ${list}">
+    <td th:utext="${item.title}"></td>
+    <td th:text="${item.lprice}"></td>
+    <td> <img th:src="${item.image}"></td>
+    <td> <a th:href="${item.link}">상품링크</a></td>
+  </tr>
+</table>
+</body>
+</html>

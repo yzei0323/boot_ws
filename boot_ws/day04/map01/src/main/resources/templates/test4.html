@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function secretHolder(secret) {
+  return {
+    getSecret: function() {
+      return secret;
+    },
+    setSecret: function(newSecret) {
+      secret = newSecret;
+    }
+  };
+}
+
+const holder = secretHolder("초기 비밀");
+
+console.log(holder.getSecret()); // 초기 비밀
+holder.setSecret("업데이트된 비밀");
+console.log(holder.getSecret()); // 업데이트된 비밀
+
+</script>
+</body>
+</html>

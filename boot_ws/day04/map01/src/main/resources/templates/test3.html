@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+  for (var i = 0; i < 3; i++) {
+  (function(index) {
+    setTimeout(function() {
+      console.log("클로저 안 index:", index);
+    }, 1000);
+  })(i);
+}
+
+// 출력:
+// 클로저 안 index: 0
+// 클로저 안 index: 1
+// 클로저 안 index: 2
+
+</script>
+
+</body>
+</html>

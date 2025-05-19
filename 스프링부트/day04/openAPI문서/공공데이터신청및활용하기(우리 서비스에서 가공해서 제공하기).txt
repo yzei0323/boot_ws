@@ -1,0 +1,46 @@
+공공데이터 (data.go.kr)
+
+1. 공공데이터 신청하기 , 키 발급받기
+2. 요청변수와 출력값 확인하기  
+3. 제공되는 코드가져오기(java용) , 필요한 옵션값 변경하기  
+
+   날짜: 오늘날짜 ( 2025-05-14)
+   형식: json 
+
+ 
+4.  응답데이터 확인하기   , main에서 확인하기  ( POSTMAN에서 확인하기)
+
+
+5.    API의 main을  매서드로 변환하여 Controller 사용할 수 있도록 변경하기
+
+6.    Controller를 만들고 확인하기  ,  json구조를 가진 문자열이므로 응답의 type을 json으로 지정함
+       produces = "application/json;charset=utf-8"  
+
+      -Controller에서 API 객체를 주입받아서 사용하기 
+
+
+7.  화면의 결과를 보고 필요한 데이터만 추출하기 
+    (ItemDTO를 설계하고) ArrayList(ItemDTO)로 변환하기 
+    (변환하는 매서드 추가하기)
+
+8.   main에서 확인하기 
+ 
+9.   Controller에서  가공된 데이타 응답하기 
+
+
+10. Controller에서 가공된 데이터를  모델로 view로 응답하기
+
+
+
+
+
+### 필요한 기능 ###
+ 
+1. json문자열을  json객체로 변환하기
+2. 필요한 값 추출하기
+3. JSONArray를   List<ItemDTO>로 변환하기 
+4. 매서드로 분리하기
+
+  
+
+

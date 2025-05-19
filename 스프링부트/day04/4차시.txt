@@ -1,0 +1,107 @@
+
+스프링부트  4차시
+
+Open Api 사용하기
+학습목표
+
+1. 카카오 지도 사용해 보기 (https://developers.kakao.com/) 
+2. json 객체를 모델로 전달하여 view에서 json객체로 사용해 보기 ( 타임리프  th:inline )
+3. 공공데이터 - 날씨데이터  활용해 보기 (미세먼지 정보 활용)
+4. naver 쇼핑 API 사용해 보기 
+5. 외부api로 받아온 데이터를 가공해서 원하는 데이터만 사용할 수 있다
+   (jsonObject를 자바객체로 변환하기)
+6. postman을 사용해서 api 요청해 보는 경험을 갖는다
+
+
+ 실습과제
+1) )지도api중에서 하나 사용해 보기
+2) 공공데이터를 가공하여 사용자에게 보여지는 응답을 만들기 
+
+- 가공된 데이터 사용하기
+ 1) MVC  모델로 보내서 view가 응답되게 하기   
+
+
+############################
+ 모델데이터를  json객체로 사용하기
+############################
+  <script th:inline="javascript">
+   //이 옵션을 사용하면 모델로 넘어온 자바객체로 바로 json객체로 사용할 수 있다 
+  </script>
+############################
+
+ 
+
+#############################
+open API 요청하기
+#############################
+1.    요청url 작성하기
+2.    요청헤더 정보 map에 추가하기 
+3.    HttpURLConnection  객체 생성하기
+4.    연결객체에  매서드  요청  type정하기(GET요청)
+5.    연결객체에  요청헤더 정보 추가하기 
+6.    연결하기                    ( connect 매서드 )
+7.    응답코드 확인후    서버 응답읽어오기   ( readBody 매서드 )
+8.    서버 응답데이터 확인하기
+9.    원하는 데이터만 추출하기    ( fromJSONtoItems 매서드) 
+
+
+
+
+#############################
+ 요청 받은 json데이터를 자바객체로 변환하기  (서비스에 필요한 데이터 가공하기)
+#############################
+
+public class JSONTOArrayList0 {
+
+	public static void main(String[] args) {		
+		
+		JSONObject  jsonitem1  = new JSONObject();
+		jsonitem1.put("id", "acor1");
+		jsonitem1.put("pw", "0000");		
+		JSONObject  jsonitem2  = new JSONObject();
+		jsonitem2.put("id", "acorn2");
+		jsonitem2.put("pw", "1234");
+		JSONObject  jsonitem3  = new JSONObject();
+		jsonitem3.put("id", "acorn3");
+		jsonitem3.put("pw", "9999");
+		
+		
+		JSONArray  arr = new JSONArray();
+		arr.put(jsonitem1);
+		arr.put(jsonitem2);
+		arr.put(jsonitem3);
+		
+		System.out.println( arr);		
+		// JSONArray  => ArrayList<UserDto>		
+		ArrayList<UserDto> list = new ArrayList<>();
+
+		for( int i=0; i< arr.length() ; i++) {
+			JSONObject item = arr.getJSONObject(i);
+			System.out.println(  item);
+		    String id  = item.getString("id");
+		    String pw =  item.getString("pw");		    
+			UserDto user = new  UserDto( id, pw); 
+			list.add(user);
+		}
+		
+		//jsonArray  => arrayList 변환 
+		System.out.println(  list); 
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
