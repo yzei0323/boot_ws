@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+  function getData(){
+    alert("fjksdjfdf");
+
+    let id = document.getElementById("id").value;
+    console.log(id);
+
+            //members/yzei
+    fetch(`/members/${id}`)
+    .then(response => response.json())
+    .then( (data)=>{console.log(data);})
+    .catch( (err)=>{console.log(err);});
+
+  }
+
+</script>
+<body>
+
+<div id="result"></div>
+
+<input type="text" id="id">
+<button onclick="getData()">고객전체조회</button>
+
+</body>
+</html>

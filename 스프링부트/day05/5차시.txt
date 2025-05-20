@@ -1,0 +1,112 @@
+
+5차시
+
+1.  파일업로드, 파일다운로드를 적용할 수 있다. 
+     파일다운로드시  헤더에 추가할 내용있음 ( CONTENT_DISPOSITION을 attachment로 해야함, 브라우저에게  화면에보이지 말고 다운로드하게 함)
+2.  rest api 설계하고 만들기 (서버가 데이터로 응답하기)
+    - fetch로 서버 화면 전환없이 데이터를 요청할 수 있다
+3.  서버가 데이터를 응답하는 방법에 대해서 알 수 있다.    
+    ( @ResponseBody , ResponseEntity )
+4.   checked Exception 과  unchecked Exception을 구분할 수 있다
+5.  @ExceptionHandler(Exception.class) 로 예외처리를 할 수 있다  -클래스내에서 일괄 예외처리 방법
+6.  @ControllerAdvice(basePackages = "com.acorn.ExceptionSample")로 예외처리를 할 수 있다 -패키지단위, 전체를 단위로 일괄 예외처리 방법
+
+  
+
+
+###############
+ 파일다운로드시 :  .header( HttpHeaders.CONTENT_DISPOSITION, contentDispositon)  헤더가 추가되어야 함 !! 
+
+
+ @RequestMapping( value="/attach/{fileName:.*}" , method=RequestMethod.GET)
+    public ResponseEntity<Resource> fileDownload(@PathVariable(name="fileName") String  fileName) throws MalformedURLException, UnsupportedEncodingException, UnsupportedEncodingException {
+
+      
+        Resource  resource=  new  UrlResource("file:c:\\test\\upload\\"+ fileName);       
+        String encodedUploadFileName = URLEncoder.encode(fileName, "UTF-8");
+
+        //응답헤더정보에 attachment라는 정보제공해야함(다운로드가 성공한다)   => 헤더를 추가 해야 함
+        String contentDispositon = "attachment; filename=\""+ encodedUploadFileName + "\"";
+        return   ResponseEntity.ok()
+                .header( HttpHeaders.CONTENT_DISPOSITION, contentDispositon)
+                .body(resource);
+    } 
+
+#################
+
+
+
+
+#################
+파일업로드 , 파일크기 및 한글설정 ( 파일이름에 한글이 포함된 경우 )
+###############
+
+application.properties에  파일업로드 관련 설정정보 작성하기
+
+
+spring.servlet.multipart.max-file-size=1MB
+spring.servlet.multipart.max-request-size=10MB 
+
+spring.web.encoding.charset=UTF-8
+spring.web.encoding.force=true
+spring.web.encoding.enabled=true
+
+
+
+
+
+###############
+  fetch사용하기  
+       fetch("/members")
+       .then( response =>  response.json())
+       .then(   (  ) =>  {  }  )
+       .catch(  (  ) => {  } );
+
+
+then()   => 성공했을 때 
+catch()  =>실패했을 때
+###################
+  
+
+
+
+ ##########
+  스프링부트에서 예외처리하기 방법  
+  1.template폴더에  error폴더 만들기 
+     -404.html
+     -4XX.html
+     -500.html
+
+ 2. Controller에서 직접 예외처리하기
+ 3.  @ExceptionHandler(Exception.class) 로 예외처리하기
+ 4.  @ControllerAdvice(basePackages = "com.acorn.ExceptionSample")로 예외처리하기
+
+ ##########
+
+ 
+
+
+########
+오류종류 
+########
+
+1.컴파일에러
+2.논리적에러
+3.런터임에러  (Error(중대한 오류)  , Exception  : 미약한 에러 :처리가능한 에러)
+
+
+Exception
+  -Exception과 그 자손     ( Checked Exception ) :예외처리 필수
+  -RuntimeExceptionr과 그 자손  ( unchecked Exception)
+
+
+!!!두 개의  Exception을 구분하자 
+Exception을 상속받은 예외  ( 필수: checked )
+RuntimeException을 상속받은 예외로 구분된다  ( 선택: unchecked)
+ 
+
+  예외처리하는 방법 :
+  UnChecked 예외  :   반드시  try~ catch
+  Checked  예외     :  1) throws  예외 미루기   2)  try~catch
+
+ Checked 은  throws로 예외 미루

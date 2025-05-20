@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script>
+    function register(){
+      //alert("sdsfd");
+
+      //사용자 입력 데이터 가져오기
+      //json 객체로 만들기
+      //확인하기
+      //fetch 사용해서 등록하기
+
+      let id = document.getElementById("id").value; // ${"#id"}.val();
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+
+      let jsonData = { id: id, name: name, email: email };
+      console.log(jsonData);
+
+      fetch("/members",{
+        method:"post",
+        headers: {"Content-Type": "application/json"} ,
+        body: JSON.stringify(jsonData)
+      })
+      .then( response => response.text() )
+      .then( ( data )=>{ console.log(data); })
+      .catch( ( err )=>{ console.log(err); });
+    }
+
+
+/*
+    fetch("/members", {
+      method: "post",
+      headers:{"Content-Type": "application/json"},
+      body: "{id: yezi, name: 황예지, email: yzei@gmail.com}"
+    })
+    .then( response => response.text() )
+    .then( (data)=>{console.log(data)}) //성공했을때
+    .catch( (err)=>{console.log(err)}); //실패했을때
+*/
+  </script>
+</head>
+<body>
+
+<input type="text" id="id" placeholder="아이디">
+<input type="text" id="name" placeholder="이름">
+<input type="text" id="email" placeholder="이메일">
+<button onclick="register()">등록</button>
+
+</body>
+</html>

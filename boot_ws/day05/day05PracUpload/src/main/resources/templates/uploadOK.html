@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+업로드 OK
+<div th:text="${fileName}"></div>
+<div th:text="${saveName}"></div>
+<!-- <img src="/images/asaa.png" alt="img"> -->
+<img th:src="@{/images/{fileName}(fileName=${fileName})}" alt="img">
+</body>
+</html>

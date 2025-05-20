@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+  <script>
+    function updateMember(){
+
+     alert("dfkdjfkd");
+
+
+     let id = document.getElementById("id").value;
+     let name = document.getElementById("name").value;
+     let email= document.getElementById("email").value;
+
+     let jsonData  = { id:id, name:name , email, email};
+
+     console.log( jsonData);
+
+
+     //fetch
+     fetch( `/members/${id}` ,{
+      method:'PUT',
+      headers :{  'Content-Type': 'application/json'} ,
+      body: JSON.stringify( jsonData)
+     })
+     .then(  response =>   response.text()   )
+     .then( data  => {
+          console.log( data );
+
+     } ).catch(  err => {
+       console.lg( err );
+     } );
+    }
+  </script>
+</head>
+<body>
+
+
+<input type="text" id="id">
+<input type="text" id="name">
+<input type="text" id="email">
+<button  onclick="updateMember()"> 수정</button>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <script>
+
+      function getData(){
+
+          fetch("/members")
+          .then(    response  =>  response.json()  )
+          .then( ( data)=>{ console.log(data);})
+          .catch( (err)=>{ console.log( err);});
+
+      }
+
+
+        // 1.fetch요청
+        // 2.응답데이터 중  응답의 바디 json으로 읽어오기
+        // 3. 성공했을 때
+        // 4. 실패했을 때
+      /*
+
+      익명함수로 구현
+
+      function getData() {
+        fetch("/members")
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+     }
+
+    */
+
+
+    function getData2(){
+       alert("dfjdkfjdfd");
+
+       fetch("/members")
+       .then( response =>  response.json())
+       .then( data  => {
+          //화면에 보여주기
+
+          console.log( data);
+
+         /*
+          let strData="<ul>";
+          for(let i=0; i< data.length; i++){
+             let member  =data[i] ;
+             console.log( member );
+             strData += `<li> ${member.name}  ${member.email} </li>`;
+
+             alert( strData );
+          }
+          strData +="</ul>";
+
+         */
+
+          // data.forEach(  function( member) {} ) ;
+          let strData= "<ul>";
+          data.forEach(  member  =>{
+             strData +=  `<li> ${member.name}   ${member.email} </li>>`;
+          });
+          strData += "</ul>";
+          let result  = document.querySelector("#result");
+          result.innerHTML = strData;
+
+
+        } ).catch(  err => {
+           console.log( err );
+        } );
+
+
+    }
+  </script>
+</head>
+<body>
+
+
+<button onclick="getData()"> 고객전체조회</button>
+<div id="result"> </div>
+</body>
+</html>
