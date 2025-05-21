@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .a{
+            color: red;
+        }
+        .b{
+            color: blue;
+        }
+
+    </style>
+</head>
+<body>
+
+<h2>조건에 맞는 경우 클래스 추가하기</h2>
+                <!-- num이 10이상이면 a라는 클래스 만들고 아니면 b클래스 만들어라 -->
+<div th:classappend="${ num >= 10 ? 'a' : 'b'}"><span th:text="${'num='+num}"></span></div>
+<div th:classappend="${ num2 >= 10 ? 'a' : 'b'}"><span th:text="${'num2='+num2}"></span></div>
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .wrap{
+          width:300px;
+          border:1px solid black;
+          padding:10px;
+        }
+
+        .title{
+          width:300px;
+          padding:10px;
+         }
+
+    </style>
+</head>
+<body>
+
+<h2>  block </h2>
+<p>   block 태그는 Thymeleaf에서 HTML 요소로 렌더링되지 않도록 하기 위해 사용함 </p>
+
+<th:block  th:each="user : ${users}">
+    <!-- class가  wrap인  영역을 반복하고 싶을 때, 바깥쪽에 태그로 묶지 않고  -->
+    <div class="wrap">
+         이름 <span th:text="${user.username}"></span>
+         나이 <span th:text="${user.age}"></span>
+    </div>
+
+    <div class="title">
+       <span > _________**********************_______</span>
+    </div>
+
+</th:block>
+
+</body>
+</html>

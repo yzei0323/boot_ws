@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<h2> 앨비스 연산자 ?: , null처리 </h2>
+<div th:text="${data} ?: '데이터가없다!!!!!!!!'">데이터가 나오는 자리</div>
+<!-- data는 앞에 ?자리에 데이터가 있어서 그 데이터가 나오는거고
+       밑에는 ? 자리 데이터가 null=> 없어서 밑에 데이터없다~~~가 나오는거임 -->
+<div th:text="${data2} ?: '데이터가없다~~~~~~~~'">데이터가 나오는 자리</div>
+<!-- data2가 null이라서? 나오는 것 같음 -->
+
+
+<h2> 앨비스연산자와 함께 사용됨, no operation, null이면 타임리프가 수행되지 않음 </h2>
+<div th:text="${data} ?: _">^^^^^^^^^^^^^^^^</div>
+<div th:text="${data2} ?: _">집에가고싶습니다감사합니다</div>
+
+</body>
+</html>

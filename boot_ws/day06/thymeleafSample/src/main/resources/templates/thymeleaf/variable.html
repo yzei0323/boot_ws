@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>SpringEL 표현식</h1>
+<ul>객체
+    <li>${user.username} =    <span th:text="${user.username}"></span></li>
+    <li>${user['username']} = <span th:text="${user['username']}"></span></li>
+    <li>${user.getUsername()} = <span th:text="${user.getUsername()}"></span></li>
+</ul>
+<ul>List
+    <li>${users[0].username}    = <span th:text="${users[0].username}"></span></li>
+    <li>${users[0]['username']} = <span th:text="${users[0]['username']}"></span></li>
+    <li>${users[0].getUsername()} = <span th:text="${users[0].getUsername()}"></span></li>
+</ul>
+
+
+<ul>List each !!
+    <li th:each="item :  ${users}">
+          <span th:text="${item.username}"></span>
+          <span th:text="${item['username']}"></span>
+          <span th:text="${item.getUsername()}"> </span>
+    </li>
+</ul>
+<ul>Map
+    <li>${userMap['acorn1'].username} =  <span th:text="${userMap['acorn1'].username}"></span></li>
+    <li>${userMap['acorn2'].username} =  <span th:text="${userMap['acorn2'].username}"></span></li>
+
+</ul>
+
+<h1>지역 변수 - (th:with)</h1>
+<div th:with="first=${users[0]}">
+    <p>처음 사람의 이름은 <span th:text="${first.username}"></span></p>
+</div>
+
+
+
+<!-- 지역변수로 해당 태그내에서만 사용가능 -->
+<div th:with="sample='test data ' ">
+    <p> sample 내용 <span th:text="${sample}"></span></p>
+</div>
+
+
+<div th:with="message=' ^__^!'">
+    <p>지역 변수 값: <span th:text="${message}"></span></p>
+</div>
+
+
+
+
+</body>
+</html>

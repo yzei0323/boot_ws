@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<h1>1부터 10까지 숫자 출력</h1>
+<ul>
+    <li th:each="num : ${#numbers.sequence(1, 10)}" th:text="${num}"></li>
+</ul>
+
+
+<div th:each="su : ${#numbers.sequence(10,20)}" th:text="${su}"></div>
+
+
+<h2>모델로 넘어온 값 활용해서 반복하기</h2>
+<div th:each="su : ${#numbers.sequence( start,end)}" th:text="${su}"></div>
+
+
+<h2>모델로 넘어온 값 활용해서 반복하기 , 객체사용하기</h2>
+<div th:each="su :${#numbers.sequence(handler.start, handler.end)}"></div>
+
+</body>
+</html>

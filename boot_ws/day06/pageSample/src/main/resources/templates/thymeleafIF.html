@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>조건에 맞는거 렌더링하기 연습하기 !!</h1>
+
+<p th:if="10 >= 10">숫자는 10 이상입니다: <span th:text="10"></span></p>
+<p th:if="5 < 10">숫자는 10 미만입니다.</p>
+
+
+
+
+
+<h1>조건에 맞는거 렌더링하기</h1>
+<p th:if="${number >= 10}">숫자는 10 이상입니다: <span th:text="${number}"></span></p>
+<p th:if="${number < 10}">숫자는 10 미만입니다.</p>
+
+
+
+
+<h1>조건에 맞는거 렌더링하기</h1>
+
+<p>사용자 정보가 admin이면 </p>
+<p>사용자 정보가 admin이 아니면 </p>
+
+<p th:if="'admin' == 'admin'">관리자입니다. o</p>
+<p th:if="${user} == 'admin'">관리자입니다  o.</p>
+<p th:if="'user'  != 'admin'">일반 사용자입니다. o </p>
+<p th:if="${user} != 'admin'">일반 사용자입니다. x</p>
+
+</body>
+</html>

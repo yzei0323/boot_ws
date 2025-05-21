@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+<div th:switch="${itemName}">
+    <p th:case="'딸기'">이 상품은 딸기입니다.</p>
+    <p th:case="'사과'">이 상품은 사과입니다.</p>
+    <p th:case="*">상품이 무엇인지 알 수 없습니다.</p>
+</div>
+
+<div th:switch="${itemValue}">
+    <p th:case="1">선택된 값은 1입니다.</p>
+    <p th:case="2">선택된 값은 2입니다.</p>
+    <p th:case="*">값이 지정되지 않았습니다.</p>
+</div>
+</body>
+</html>

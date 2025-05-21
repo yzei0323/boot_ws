@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>if, unless  문</h1>
+<table border="1">
+    <tr>
+        <th>count</th>
+        <th>username</th>
+        <th>age</th>
+    </tr>
+    <tr th:each="user, userStat : ${users}">
+        <td th:text="${userStat.count}">1</td>
+        <td th:text="${user.username}">username</td>
+        <td>
+            <span th:text="${user.age}">0</span>
+            <span th:text="|어린이 ${user.age} |" th:if="${user.age < 10}"></span>
+            <span th:text="'어린이'" th:unless="${user.age >= 10}"></span>
+        </td>
+    </tr>
+
+<h1>switch문  </h1>
+<table border="1">
+    <tr>
+        <th>count</th>
+        <th>username</th>
+        <th>age</th>
+    </tr>
+    <tr th:each="user, userStat : ${users}">
+        <td th:text="${userStat.count}">1</td>
+        <td th:text="${user.username}">username</td>
+
+        <td th:switch="${user.age}">
+            <span th:case="20">20살</span>
+            <span th:case="30">30살</span>
+            <span th:case="*">기타</span>
+        </td>
+    </tr>
+</table>
+
+<h2> 테스트</h2>
+
+<div th:switch="20">
+    <span th:case="20">20살</span>
+    <span th:case="30">30살</span>
+    <span th:case="*">기타</span>
+</div>
+
+
+<h2>문자열은  ' ' 따옴표 </h2>
+<div th:switch="'admin'">
+    <span th:case="'admin'">관리자</span>
+    <span th:case="'user'">일반 사용자</span>
+    <span th:case="*">기타</span>
+</div>
+</body>
+</html>

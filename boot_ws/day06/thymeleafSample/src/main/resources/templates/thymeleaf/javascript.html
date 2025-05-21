@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- 자바스크립트 인라인 사용 전 -->
+<script >
+
+    let users0  =  '[[${users}]]';
+    console.log( users0);
+
+</script>
+
+<!-- 자바스크립트 인라인 사용 후 -->
+<!-- 객체를 json으로 넘겨줌 -->
+
+<script th:inline="javascript">
+     let users  =  [[${users}]];
+     console.log( users);
+</script>
+
+</body>
+</html>
