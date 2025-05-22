@@ -1,0 +1,20 @@
+TestInterceptor 하나 만들고  등록해보세요 
+1) 인터셉터 만들기 (  HandlerInterceptor 인터페이스 구현하기 )
+2) 3개의 매서드 오버라이드 하기
+3) preHandle ( return true ), postHandle  , aftereCompletion
+   preHandle:컨트롤러  요청전  호출
+   postHandle:컨트롤러 정상 수행후 호출 (에러발생하면 호출되지 않음)
+   afterCompletion :응답될 때 호출
+ 
+간단하게 호출되는지   System.out.println("  !!");  출력해보기
+
+4) webconfig 파일 만들기  (인터셉터 등록하기)
+    - WebMvcConfigurer인터페이스 구현하기 
+    - addInterceptors 매서드 오버라이드하기
+    - 인터셉터 등록하기
+      (인터셉터가 적용될  url 패턴등록하기 )
+      ( order를 통해서 실행될 순서를 정할 수 있다)
+  
+5) TestController 하나 만들고 매핑을 하나 추가한다음 
+   TestInterceptor 가 동작하는지 확인해보세요 
+   

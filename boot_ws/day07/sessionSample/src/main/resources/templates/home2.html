@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Home</title>
+</head>
+<body>
+<h1>Home2</h1>
+
+
+<div th:if="${session.userId !=null}">
+    로그아웃
+</div>
+
+<div th:if="${session.userId ==null}">
+   로그인
+</div>
+
+</body>
+</html>

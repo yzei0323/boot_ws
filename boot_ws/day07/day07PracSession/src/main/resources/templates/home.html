@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>HOME</h2>
+
+<h3>세션정보를 활용해서 적절한 뷰 제공</h3>
+<div th:if="${session.USERID == null}">
+    <a th:href="@{/loginForm}">로그인</a></div>
+<div th:if="${session.USERID != null}">
+    <a th:href="@{/logout}">로그아웃</a></div>
+</body>
+</html>

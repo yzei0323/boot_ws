@@ -1,0 +1,67 @@
+7차시 
+
+1. 세션저장소를 사용하여 로그인 정보를 계속 유지할 수 있다(세션에 정해진 시간만큼)
+2. 쿠키를 사용하여  사용자(클라이언트) 공간에 데이터를 저장하고 사용할 수 있다 
+    -연령대에 대한 다양한 뷰 제공하기
+    -아이디기억하기
+3. 인터셉터를 활용하여 로그인이 안된 사용자는 로그인 화면으로 redirect 할 수 있다 
+4. 인터셉터를 활용하여 요청의 처리시간을 확인하는 경험을 한다
+5. 인터셉터의    preHandle,  postHandle,  afterHandle 각 매서드의 호출시점을 알 수 있다 
+
+   * 가장 중요한 preHandle  매서드 , Controller 요청전에 수행할 코드를 일괄적으로 처리할 수 있다 
+     (boolean을 리턴함,   
+     true 반환   => 이후 정상적인 요청을 수행
+     false 반환  => 정상적인 컨트롤러의 흐름으로 넘어가지 않고 특정 페이지로  리다이렉트 할 수 있다
+     (요청을 중지시키고 다른 작업을 수행하게 함)
+
+
+
+
+
+
+
+
+
+
+
+스프링 인터셉터 동작
+1. preHandle    (컨트롤러 호출전에 작동함)
+2. postHandle   (컨트롤러 반환시에 작동함)
+3. afterCompletion ( 뷰가 렌더링 된 이후에 호출된다),응답후
+
+
+
+예외 발생시 :
+ postHandle은 호출되지 않는다
+ afterCompletion은 항상 호출됨
+
+
+
+
+ WebConfig 인터셉터 등록
+
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new SessionInterceptor())
+                .addPathPatterns("/*.do", "/*.acorn");
+
+
+        /* 두 번째 인터셉터 등록
+        registry.addInterceptor(new LoggingInterceptor())
+                .addPathPatterns("/api/**"); // 예: "/api/**" 패턴에 적용
+
+       */
+
+    }
+}
+
+
+
+1. 인터셉터로 등록하기
+2. order(1) : 인터셉터의 호출 순서룰 지정할 수 있다
+3. addPathPatterns : 인터셉터를 적용할 URL 패턴을 지정
+
+
