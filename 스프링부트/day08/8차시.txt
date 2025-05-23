@@ -1,0 +1,53 @@
+  8차시 데이터 변환과 검증
+  학습 목표
+
+1. 데이터 변환과 검증의 순서를 이해할 수 있다.
+2. @InitBinder의 작성 위치와 호출 시기를 알 수 있다.
+3. 변환 오류 시 BindingResult를 사용하고, 오류 메시지 등록을 통해 사용자 친화적인 오류 메시지를 제공할 수 있다.
+4. Validator를 작성하고 검증 로직을 분리하는 경험을 갖는다.
+5. Validator를 @InitBinder에 등록할 수 있다.
+6. Bad Request (400 오류) 에 대해 인지할 수 있다.
+
+  대표적인 400 오류
+"안녕" → int, Integer 타입에 전달 (타입 불일치: Type Mismatch)
+값이 없는 경우 → int 타입에서 오류 (기본형은 null을 받을 수 없음)
+문자열을 날짜로 변환 시 오류 발생 → 변환 방법을 명시하지 않으면 실패
+ **** 숫자 타입 변수는 int보다는 Integer 같은 Wrapper 클래스를 사용하는 것이 좋다 (값이 없는경우도 문제되지 않는다)
+
+
+1) 데이터 변환
+클라이언트로부터 HTTP 요청 데이터가 도착
+스프링이 기본 제공하는  타입 컨버터(Type Converter)를 통해 데이터 변환 수행
+변환 실패 시 예외 발생 → 오류 메시지 포함된 페이지 출력
+변환 오류를 사용자 친화적으로 처리하려면 BindingResult를 파라미터로 선언
+메시지 출력에 필요한 오류 코드와 메시지를 messages.properties에 등록
+뷰에서 오류 메시지를 출력하도록 설정
+
+!!!! 입력 오류가 있을 경우 단순히 에러 화면을 보여주는 것이 아니라, 입력 폼으로 돌아가 올바르게 다시 입력할 수 있게 하는 것이 사용자 친화적인 UX 이다 !
+
+2) 데이터 검증
+도메인 검증 로직을 별도의 Validator 클래스로 분리하여 작성
+검증 대상 객체 앞에 @Validated 애너테이션 추가
+검증 결과는 자동으로 BindingResult에 저장됨
+뷰에서 오류 메시지를 출력하도록 구현
+
+###########################
+validated  예시
+ ##########################
+@PostMapping("/order")
+public String order(@ModelAttribute @Validated Order order, BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+        return "orderForm";
+    }
+    return "redirect:/home";
+}
+
+
+################
+  @InitBinder 예시
+###############
+ 
+@InitBinder
+public void initBinder(WebDataBinder binder) {
+    binder.addValidators(new OrderValidator());
+}

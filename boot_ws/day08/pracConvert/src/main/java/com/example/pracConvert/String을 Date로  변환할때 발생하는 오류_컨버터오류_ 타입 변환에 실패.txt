@@ -1,0 +1,5 @@
+Thu May 22 20:13:11 KST 2025
+There was an unexpected error (type=Bad Request, status=400).
+Validation failed for object='item'. Error count: 1
+org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String com.example.pracConvert.ItemController.item(com.example.pracConvert.Item): [Field error in object 'item' on field 'inDate': rejected value [2025-05-10]; codes [typeMismatch.item.inDate,typeMismatch.inDate,typeMismatch.java.util.Date,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable:
+codes [item.inDate,inDate]; arguments []; default message [inDate]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'java.util.Date' for property 'inDate'; Failed to convert from type [java.lang.String] to type [java.util.Date] for value [2025-05-10]]]

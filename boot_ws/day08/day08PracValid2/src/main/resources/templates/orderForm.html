@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- form과  모델객체가 바인딩 -->
+<form th:action="@{/order}" method="post"  th:object="${order}">
+  <div th:errors="*{name}"></div>
+  상품이름 : <input type="text"  th:field="*{name}" ><br>
+
+  <div th:errors="*{price}"></div>
+  상품금액 : <input type="text"  th:field="*{price}" ><br>
+
+  <div th:errors="*{qty}"></div>
+  상품수량 : <input type="text"  th:field="*{qty}"><br>
+  <button>주문하기</button>
+</form>
+
+</body>
+</html>

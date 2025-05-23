@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- th:object를 사용하여 모델의 값 객체를 폼에 바인딩 -->
+<form th:action="@{/order6}" th:object="${order}"  method="post">
+
+    <!-- 이름 입력 필드 -->
+
+    <div th:errors="*{name}"> 상품이름 오류 </div>
+    <input type="text"   placeholder="이름"  th:field="*{name}"> <br>
+    <!-- 가격 입력 필드 -->
+
+
+    <div th:errors="*{price}"> 가격오류</div>
+    <input type="text"   placeholder="가격"  th:field="*{price}" > <br>
+    <!-- 수량 입력 필드 -->
+
+
+    <div th:errors="*{qty}"> 수량오류</div>
+    <input type="text" placeholder="수량"  th:field="*{qty}"><br>
+    <!-- 제출 버튼 -->
+    <button type="submit">주문</button>
+
+</form>
+
+
+</body>
+</html>
+
+
+
+
